@@ -1,16 +1,31 @@
 library(shiny)
+library(shinydashboard)
+library(leaflet)
 
-shinyUI(fluidPage(
-	titlePanel("Traffic Analysis for Glenbridge"),
+header <- dashboardHeader(
+	title="Glenwood Bridge"
+)
 
-	sidebarLayout(
-		sidebarPanel("sidebar Panel"),
-		mainPanel(
-			h1("Performance Measures", align="center"),
-			h6("These are the performance measures"),
-			h3("Heading 3")
-		)
+source("page1.R")
+source("page2.R")
+source("page3.R")
+
+
+
+
+
+getpage <- function(index) {
+	switch(index, 
+		P1={return(page1)},
+		P2={return(page2)},
+		P3={return(page3)}
 	)
-))
+}
 
-
+dashboardPage(
+	header,
+	dashboardSidebar(disable=TRUE),
+	getpage("P1")
+)
+	
+	

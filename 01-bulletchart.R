@@ -8,12 +8,12 @@ bullet.graph <- function(bg.data){
   gg <- gg + geom_bar(aes(measure, high),  fill="#eeeeee", stat="identity", width=0.5, alpha=0.2) 
   gg <- gg + geom_bar(aes(measure, mean),  fill="#dddddd", stat="identity", width=0.5, alpha=0.2) 
   gg <- gg + geom_bar(aes(measure, low),   fill="#cccccc", stat="identity", width=0.5, alpha=0.2) 
-  gg <- gg + geom_bar(aes(measure, value), fill="black",  stat="identity", width=0.2) 
-  gg <- gg + geom_errorbar(aes(y=target, x=measure, ymin=target, ymax=target), color="red", width=0.45) 
-  gg <- gg + geom_point(aes(measure, target), colour="red", size=2.5) 
+  gg <- gg + geom_bar(aes(measure, value), fill="#4682b4",  stat="identity", width=0.2) 
+  gg <- gg + geom_errorbar(aes(y=target, x=measure, ymin=target, ymax=target), color="black", width=0.45) 
+  # gg <- gg + geom_point(aes(measure, target), colour="black", size=2.5) 
   gg <- gg + scale_y_continuous(breaks=seq(0,max.bg,mid.bg))
   gg <- gg + coord_flip()
-  gg <- gg + theme(axis.text.x=element_text(size=5),
+  gg <- gg + theme(axis.text.x=element_text(size=10),
                    axis.title.x=element_blank(),
                    axis.line.y=element_blank(), 
                    axis.text.y=element_text(hjust=1, color="black"), 
