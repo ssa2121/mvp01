@@ -3,15 +3,12 @@ library(shinydashboard)
 library(leaflet)
 
 header <- dashboardHeader(
-	title="Glenwood Bridge"
+	title="Glenwood Springs"
 )
 
 source("page1.R")
 source("page2.R")
 source("page3.R")
-
-
-
 
 
 getpage <- function(index) {
