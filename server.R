@@ -1,4 +1,8 @@
+# Original: 9th June 2017 by Shourya Shukla
+# Last update: 12th June 2017 by Shourya Shukla
+
 library(shiny)
+# library(DT)
 library(shinydashboard)
 library(leaflet)
 library(ggplot2)
@@ -61,6 +65,9 @@ pt.index <- data.frame(
 
 pt.index.bg <- bullet.graph(pt.index)
 
+my_data <- head(mtcars)
+
+# heatmap <- ggplot(tslp, aes(x = Hour, y = Day)) + geom_tile(aes(fill = Freq)) + scale_fill_gradient(name = 'Total Motor Vehicle Thefts', low = 'green', high = 'red') + theme(axis.title.y = element_blank())
 # incidents.pct.bg <- bullet.graph(incidents.pct)
 
 function(input, output, session) {
@@ -94,6 +101,13 @@ function(input, output, session) {
 		setView(lngX,latY,17) %>%
 		addTiles('http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png')
 	})
+
+	output$tblCongSect <- renderTable(congdf)
+	# output$tblCongSect <- DT::renderDataTable({
+	# 	datatable(congdf) 
+	# })
+
+ 	# output$tblCongSect <- DT::renderDataTable({datatable(my_data)})  
 
 }
 

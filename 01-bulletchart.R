@@ -1,3 +1,6 @@
+# Original: 9th June 2017 by Shourya Shukla
+# Last update: 12th June 2017 by Shourya Shukla
+
 bullet.graph <- function(bg.data){
   
   # compute max and half for the ticks and labels

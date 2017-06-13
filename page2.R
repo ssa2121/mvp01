@@ -1,8 +1,24 @@
+# Original: 9th June 2017 by Shourya Shukla
+# Last update: 12th June 2017 by Shourya Shukla
+
 page2 <- dashboardBody(
+	toplvlprompt,
 	fluidRow(
 		column(width=12,
 			box(width=NULL, solidHeader=TRUE,
-				h4("This is page 2")
+				h4("This is page 2"),
+				tableOutput("tblCongSect")
+			)
+		)
+	)
+	, fluidRow(
+		column(width=12,
+			box(width=NULL, status="warning",
+				leafletOutput("studyAreaMap",height= 450),
+				p(
+					class="text-muted",
+					paste("The map comes here")
+				)
 			)
 		)
 	)
