@@ -4,12 +4,18 @@
 page2 <- dashboardBody(
 	toplvlprompt,
 	fluidRow(
-		column(width=12,
+		column(width=8,
 			box(width=NULL, solidHeader=TRUE,
 				h4("This is page 2"),
 				tableOutput("tblCongSect")
 			)
 		)
+		,column(width=4,
+			box(width=NULL, solidHeader=TRUE,
+				plotOutput("section1HeatMap", height=80, width="100%")
+			)
+		)
+
 	)
 	, fluidRow(
 		column(width=12,

@@ -27,10 +27,14 @@ getpage <- function(index) {
 	)
 }
 
+
+
+body <- dashboardBody(uiOutput("body"))
 dashboardPage(
 	header,
 	dashboardSidebar(disable=TRUE),
-	getpage("P2")
+	getpage("P1")
+	# body
 )
 	
 	

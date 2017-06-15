@@ -9,6 +9,15 @@ library(ggplot2)
 
 if(!exists("bullet.graph",mode="function")) source("01-bulletchart.R")
 
+
+tabBody <- div(
+	tabBox(	tabPanel("P1", page1)
+		,tabPanel("P2",page2)
+		,tabPanel("P3",page3)
+		,width=12
+  	)
+)
+
 total.delay <- data.frame(
 	measure=c(""),
 	high=c(2000),
@@ -67,11 +76,20 @@ pt.index.bg <- bullet.graph(pt.index)
 
 my_data <- head(mtcars)
 
+sec1heatMap <- traffic.heatmap(tslp, tslp$Hour, tslp$Day, tslp$Volume, FALSE)
+
+secDtlHeatMap <- traffic.heatmap(tslp, tslp$Hour, tslp$Day, tslp$Volume, TRUE)
 # heatmap <- ggplot(tslp, aes(x = Hour, y = Day)) + geom_tile(aes(fill = Freq)) + scale_fill_gradient(name = 'Total Motor Vehicle Thefts', low = 'green', high = 'red') + theme(axis.title.y = element_blank())
 # incidents.pct.bg <- bullet.graph(incidents.pct)
 
 function(input, output, session) {
-	
+
+	# output$body <- renderUI({})
+	# outputOptions(output, "body", suspendWhenHidden = FALSE)
+
+
+	# output$body <- renderUI(tabBody)
+	# outputOptions(output, "body", suspendWhenHidden = FALSE)
 
 	# Show the bullet charts showing the various metrics
 	output$level1.bullet1 <- renderPlot({
@@ -103,6 +121,17 @@ function(input, output, session) {
 	})
 
 	output$tblCongSect <- renderTable(congdf)
+
+	output$section1HeatMap <- renderPlot(sec1heatMap, width=350, height=50) 
+
+	output$spdFloCurve <- renderPlot(secDtlHeatMap, width=400, 250)
+
+	output$wkHeatMap <- renderPlot(secDtlHeatMap, width=500, 300)
+
+	# output$trvlReliability<- renderPlot(secDtlHeatMap, width=400, 350)
+
+	# output$normSpdWkday <- renderPlot(secDtlHeatMap, width=400, 350)
+
 	# output$tblCongSect <- DT::renderDataTable({
 	# 	datatable(congdf) 
 	# })

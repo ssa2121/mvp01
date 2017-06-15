@@ -2,10 +2,35 @@
 # Last update: 9th June 2017 by Shourya Shukla
 
 page3 <- dashboardBody(
+		toplvlprompt,
 	fluidRow(
-		column(width=12,
-			box(width=NULL, solidHeader=TRUE,
-				h4("This is page 3")
+		column(width=8,
+			box(width=NULL, status="warning",
+				leafletOutput("studyAreaMap",height= 350)
+			)
+		)
+		,column(width=4,
+			box(width=NULL, status="warning",
+				plotOutput("spdFloCurve", height=350)
+			)
+		)
+
+	)
+	, 
+	fluidRow(
+		column(width=4,
+			box(width=NULL, status="warning",
+				plotOutput("wkHeatMap",height= 350)
+			)
+		)
+		,column(width=4,
+			box(width=NULL, status="warning",
+				plotOutput("trvlReliability",height= 350)
+			)
+		)
+		,column(width=4,
+			box(width=NULL, status="warning",
+				plotOutput("normSpdWkday",height= 350)
 			)
 		)
 	)

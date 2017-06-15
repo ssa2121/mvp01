@@ -25,5 +25,10 @@ for i in $( awk -F "\"*,\"*" '{print $4}' TrafficStations.csv ); do
 	wget -nc http://dtdapps.coloradodot.info/otis/API/TRANSYS/GetDailyTrafficVolumeForStationByDay/$i/false/2015-7-7.csv -O $i-07-07-2015.csv
 	wget -nc http://dtdapps.coloradodot.info/otis/API/TRANSYS/GetDailyTrafficVolumeForStationByDay/$i/false/2015-7-8.csv -O $i-08-07-2015.csv
 done
+unzip MajorRoads.zip
+unzip LocalRoads.zip
+unzip counties.zip
+unzip cities.zip
+unzip Routes.zip
 
 
